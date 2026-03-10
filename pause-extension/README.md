@@ -1,36 +1,54 @@
-# Pause Extension
+# Pause
 
-The Pause Extension is a Chrome extension designed to help users break mindless scrolling habits by prompting them with a question about their current website. It allows users to reflect on their browsing behavior and manage a list of blocked sites to encourage more mindful internet usage.
+**Break the trance. Ask yourself why before you scroll.**
+
+Pause is a Chrome extension that helps you build more intentional browsing habits. When you click the extension icon, it asks *"Why are you opening this site?"* — giving you a moment to reflect before you dive in.
 
 ## Features
 
-- Prompts the user with a question about why they are opening the current website.
-- Includes a text entry box for users to provide their response.
-- Allows users to view, add, and remove blocked sites.
-- Stores user responses and blocked sites to help track and manage browsing habits.
+- **Mindful prompt** — asks why you're visiting the current site and logs your reason
+- **Blocked sites** — add sites to a block list; they'll be redirected to a gentle "paused" page
+- **Reason log** — review past reasons to spot patterns in your browsing
+- **Synced storage** — your blocked-sites list syncs across Chrome devices
 
-## Installation
+## Installation (Load Unpacked)
 
-1. Download or clone the repository to your local machine.
-2. Open Chrome and navigate to `chrome://extensions/`.
-3. Enable "Developer mode" by toggling the switch in the top right corner.
-4. Click on "Load unpacked" and select the `pause-extension` directory.
-5. The extension should now be installed and visible in your extensions list.
+1. Clone or download this repository
+2. Open Chrome and navigate to `chrome://extensions/`
+3. Enable **Developer mode** (toggle in the top-right corner)
+4. Click **Load unpacked** and select the `pause-extension` folder
+5. The Pause icon will appear in your toolbar
 
-## Usage
+## Project Structure
 
-1. Click on the Pause Extension icon in the Chrome toolbar.
-2. A popup will appear, prompting you with a question about your current website.
-3. Enter your response in the text box and submit it.
-4. Use the buttons to manage your blocked sites:
-   - View the list of blocked sites.
-   - Add new sites to the blocked list.
-   - Remove sites from the blocked list.
+```
+pause-extension/
+├── manifest.json
+├── README.md
+└── src/
+    ├── background/
+    │   └── background.js      ← Service worker: blocked-site detection
+    ├── blocked/
+    │   ├── blocked.html        ← Page shown when a blocked site is visited
+    │   ├── blocked.css
+    │   └── blocked.js
+    ├── content/
+    │   └── content.js          ← Content script (placeholder for future features)
+    └── popup/
+        ├── popup.html          ← Extension popup UI
+        ├── popup.css
+        └── popup.js
+```
 
-## Contributing
+## How It Works
 
-Contributions are welcome! If you have suggestions for improvements or new features, please open an issue or submit a pull request.
+| Component | Role |
+|---|---|
+| **Popup** | Shows "Why are you opening [site]?", manages blocked sites, and displays the reason log |
+| **Background** | Watches tab navigation; redirects blocked sites to the paused page |
+| **Blocked page** | Explains the site is paused; offers "Go Back" or "Unblock" |
+| **Content script** | Reserved for future page-level features (scroll tracking, timers, overlays) |
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for more details.
+MIT
