@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Pause",
+  "version": "1.0",
+  "description": "Break the trance. Ask yourself why before you scroll.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "activeTab"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Pause"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
