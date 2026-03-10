@@ -3,6 +3,12 @@
   "name": "Pause",
   "version": "1.0",
   "description": "Break the trance. Ask yourself why before you scroll.",
+  "icons": {
+    "16": "assets/icons/icon16.png",
+    "32": "assets/icons/icon32.png",
+    "48": "assets/icons/icon48.png",
+    "128": "assets/icons/icon128.png"
+  },
   "permissions": [
     "storage",
     "tabs"
@@ -12,7 +18,12 @@
   },
   "action": {
     "default_popup": "src/popup/popup.html",
-    "default_title": "Pause"
+    "default_title": "Pause",
+    "default_icon": {
+      "16": "assets/icons/icon16.png",
+      "32": "assets/icons/icon32.png",
+      "48": "assets/icons/icon48.png"
+    }
   },
   "content_scripts": [
     {

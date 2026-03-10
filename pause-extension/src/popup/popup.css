@@ -5,17 +5,17 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg:               #f0ede8;
-  --surface:          #e8e4de;
-  --surface-raised:   #dedad3;
-  --text-primary:     #2c2b29;
-  --text-secondary:   #7a776f;
-  --text-muted:       #a8a49c;
-  --border:           #d4cfc8;
-  --btn-bg:           #2c2b29;
-  --btn-text:         #f0ede8;
-  --btn-ghost-border: #b0aba2;
-  --btn-ghost-text:   #5a5750;
+  --bg:               #eef2f7;
+  --surface:          #e5ebf4;
+  --surface-raised:   #dbe2ed;
+  --text-primary:     #1f2d42;
+  --text-secondary:   #4d607d;
+  --text-muted:       #7283a0;
+  --border:           #c8d3e4;
+  --btn-bg:           #294266;
+  --btn-text:         #f7f9fc;
+  --btn-ghost-border: #9db0cb;
+  --btn-ghost-text:   #3d5271;
   --danger:           #8b3a3a;
   --radius:           3px;
   --transition:       400ms ease;
@@ -75,6 +75,15 @@ body {
   font-family: var(--font-ui);
   margin-bottom: 0.6rem;
   font-weight: 400;
+}
+
+.brand-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  margin: 0 auto 0.7rem;
+  display: block;
+  box-shadow: 0 4px 12px rgba(31, 45, 66, 0.22);
 }
 
 .headline {

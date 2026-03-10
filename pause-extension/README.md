@@ -25,6 +25,12 @@ Pause is a Chrome extension that helps you build more intentional browsing habit
 pause-extension/
 ├── manifest.json
 ├── README.md
+├── assets/
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon32.png
+│       ├── icon48.png
+│       └── icon128.png
 └── src/
     ├── background/
     │   └── background.js      ← Service worker: blocked-site detection
