@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Blocked Sites</title>
+    <link rel="stylesheet" href="sites.css">
+</head>
+<body>
+    <div id="site-management">
+        <h1>Manage Blocked Sites</h1>
+        <div id="question-prompt">
+            <label for="site-question">Why are you opening this site?</label>
+            <input type="text" id="site-question" placeholder="Enter your reason here...">
+        </div>
+        <button id="submit-reason">Submit Reason</button>
+        
+        <h2>Blocked Sites</h2>
+        <ul id="blocked-sites-list"></ul>
+        
+        <div id="add-site">
+            <input type="text" id="new-site" placeholder="Add a new site to block...">
+            <button id="add-site-button">Add Site</button>
+        </div>
+    </div>
+    <script src="sites.js"></script>
+</body>
+</html>
