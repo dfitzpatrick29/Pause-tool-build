@@ -61,6 +61,7 @@ const ackMessage      = document.getElementById('ack-message');
 
 let ackTimeout = null;
 let currentSiteHostname = 'this page';
+let interceptMode = false;
 
 /* ── View transition ── */
 function showView(id) {
@@ -186,7 +187,13 @@ btnSubmit.addEventListener('click', async () => {
   showView('ack');
 
   clearTimeout(ackTimeout);
-  ackTimeout = setTimeout(() => showView('entry'), ACK_MS);
+  if (interceptMode) {
+    /* Signal the content script to reveal the page, then close popup */
+    chrome.runtime.sendMessage({ type: 'PAUSE_PROCEED' });
+    ackTimeout = setTimeout(() => window.close(), ACK_MS);
+  } else {
+    ackTimeout = setTimeout(() => showView('entry'), ACK_MS);
+  }
 });
 
 /* ── Navigation buttons ── */
@@ -213,6 +220,16 @@ btnClearLog.addEventListener('click', async () => {
 
 /* ── Initialise ── */
 (async () => {
-  currentSiteHostname = await getCurrentSite();
+  const data = await chrome.storage.local.get({ pause_pending: null });
+  if (data.pause_pending) {
+    /* Opened automatically because a blocked site was navigated to */
+    interceptMode        = true;
+    currentSiteHostname  = data.pause_pending.site;
+    /* Hide navigation buttons that aren't relevant during interception */
+    btnViewLog.style.display     = 'none';
+    btnOpenBlocked.style.display = 'none';
+  } else {
+    currentSiteHostname = await getCurrentSite();
+  }
   currentSiteEl.textContent = currentSiteHostname + '?';
 })();
